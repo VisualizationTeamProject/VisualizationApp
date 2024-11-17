@@ -1,12 +1,14 @@
 import {
   ViroARScene,
   ViroARSceneNavigator,
+  ViroButton,
   ViroText,
   ViroTrackingReason,
   ViroTrackingStateConstants,
 } from "@reactvision/react-viro";
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
+import { Home } from "./components/Home";
 
 const HelloWorldSceneAR = () => {
   const [text, setText] = useState("Initializing AR...");
@@ -33,14 +35,31 @@ const HelloWorldSceneAR = () => {
 };
 
 export default () => {
-  return (
-    <ViroARSceneNavigator
-      autofocus={true}
-      initialScene={{
-        scene: HelloWorldSceneAR,
-      }}
-      style={styles.f1}
-    />
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const handleMenuChange = () => {
+    setIsMenuActive(!isMenuActive);
+  };
+
+  return !isMenuActive ? (
+    <>
+      <ViroARSceneNavigator
+        autofocus={true}
+        initialScene={{
+          scene: HelloWorldSceneAR,
+        }}
+        style={styles.f1}
+      />
+      <View>
+        <Button title="+" onPress={handleMenuChange} />
+      </View>
+    </>
+  ) : (
+    <>
+<Home/>
+    <View>
+      <Button title="+" onPress={handleMenuChange} />
+    </View>
+    </>
   );
 };
 
