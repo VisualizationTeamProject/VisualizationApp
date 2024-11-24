@@ -1,10 +1,10 @@
 import {
   ViroARScene,
   ViroARSceneNavigator,
-  ViroButton,
-  ViroText,
+  Viro3DObject,
   ViroTrackingReason,
   ViroTrackingStateConstants,
+  ViroAmbientLight,
 } from "@reactvision/react-viro";
 import React, { useState } from "react";
 import {  StyleSheet, View } from "react-native";
@@ -17,10 +17,10 @@ import { AppMenu } from "./components/AppMenu";
 const HelloWorldSceneAR = () => {
   const [text, setText] = useState("Initializing AR...");
 
-  function onInitialized(state: any, reason: ViroTrackingReason) {
+  function onInitialized(state, reason) {
     console.log("onInitialized", state, reason);
     if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
-      setText("Hello World!");
+      setText("Tracking Ready");
     } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
       // Handle loss of tracking
     }
@@ -28,11 +28,15 @@ const HelloWorldSceneAR = () => {
 
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
-      <ViroText
-        text={text}
-        scale={[0.5, 0.5, 0.5]}
-        position={[0, 0, -1]}
-        style={styles.helloWorldTextStyle}
+      <ViroAmbientLight color="#ffffff" />
+      <Viro3DObject
+        source={require("./models/sample-house/Bambo_House.obj")} 
+        resources={[
+          require("./models/sample-house/Bambo_House.mtl"), 
+        ]}
+        position={[0, 0, -2]} 
+        scale={[0.1, 0.1, 0.1]} 
+        type="OBJ" 
       />
     </ViroARScene>
   );
@@ -72,13 +76,6 @@ export default () => {
 
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   f1: { flex: 1 },
-  helloWorldTextStyle: {
-    fontFamily: "Arial",
-    fontSize: 30,
-    color: "#ffffff",
-    textAlignVertical: "center",
-    textAlign: "center",
-  },
 });
