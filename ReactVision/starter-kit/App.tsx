@@ -7,8 +7,12 @@ import {
   ViroTrackingStateConstants,
 } from "@reactvision/react-viro";
 import React, { useState } from "react";
-import { Button, StyleSheet, View } from "react-native";
-import { Home } from "./components/Home";
+import {  StyleSheet, View } from "react-native";
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, Button, Icon, IconElement, IconProps, IconRegistry, Layout } from "@ui-kitten/components";
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { Products } from "./components/ProductsPage";
+import { AppMenu } from "./components/AppMenu";
 
 const HelloWorldSceneAR = () => {
   const [text, setText] = useState("Initializing AR...");
@@ -40,28 +44,33 @@ export default () => {
     setIsMenuActive(!isMenuActive);
   };
 
-  return !isMenuActive ? (
+  return (
     <>
-      <ViroARSceneNavigator
-        autofocus={true}
-        initialScene={{
-          scene: HelloWorldSceneAR,
-        }}
+    <IconRegistry icons={EvaIconsPack} />
+    <ApplicationProvider {...eva} theme={eva.light}>
+      {!isMenuActive ? (
+        <>
+        <ViroARSceneNavigator
+          autofocus={true}
+          initialScene={{
+            scene: HelloWorldSceneAR,
+          }}
         style={styles.f1}
-      />
-      <View>
-        <Button title="+" onPress={handleMenuChange} />
-      </View>
-    </>
-  ) : (
-    <>
-<Home/>
-    <View>
-      <Button title="+" onPress={handleMenuChange} />
-    </View>
+
+        />
+        <AppMenu onPress={handleMenuChange} menuState={isMenuActive} />
+        </>
+        
+      ) : (
+        <Products onPress={handleMenuChange} menuState={isMenuActive}/>
+      )}
+        
+    </ApplicationProvider>
     </>
   );
-};
+
+
+}
 
 var styles = StyleSheet.create({
   f1: { flex: 1 },
