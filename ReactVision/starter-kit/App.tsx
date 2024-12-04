@@ -6,7 +6,7 @@ import {
   ViroAmbientLight,
   ViroARCamera,
 } from "@reactvision/react-viro";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import * as eva from "@eva-design/eva";
 import {
@@ -35,9 +35,11 @@ const initModel: objectModel = {
   asset: "Bambo_House.png",
 };
 
-const HelloWorldSceneAR = (modelName: string) => {
+const HelloWorldSceneAR = ({ modelName, rotationActive }) => {
   const [text, setText] = useState("Initializing AR...");
   const [scaleObject, setScale] = useState([0.2, 0.2, 0.2]);
+  const [rotation, setRotation] = useState([0, 0, 0]); // State for rotation
+
   function onInitialized(state: any, reason: any) {
     console.log("onInitialized", state, reason);
     if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
@@ -62,6 +64,22 @@ const HelloWorldSceneAR = (modelName: string) => {
     }
   };
 
+  // Rotate the object based on rotationActive prop
+  useEffect(() => {
+    let interval;
+    console.log(rotationActive)
+    if (rotationActive) {
+      interval = setInterval(() => {
+        setRotation((prevRotation) => [
+          prevRotation[0],
+          prevRotation[1] + 1,
+          prevRotation[2],
+        ]);
+      }, 50);
+    }
+    return () => clearInterval(interval);
+  }, [rotationActive]);
+
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
       <ViroAmbientLight color="#FFFFF0" />
@@ -71,6 +89,7 @@ const HelloWorldSceneAR = (modelName: string) => {
         scale={scaleObject}
         type="OBJ"
         onPinch={onPinchHandle}
+        rotation={rotation} // Apply the rotation to the object
       />
     </ViroARScene>
   );
@@ -83,6 +102,11 @@ export default () => {
   };
   const [globalModel, setGlobalModel] = useState<objectModel>(initModel);
   const handleObjectChange = (object: objectModel) => setGlobalModel(object);
+  const [isRotating, setIsRotating] = useState(true); // State for rotation
+
+  const toggleRotation = () => {
+    setIsRotating(!isRotating);
+  };
 
   return (
     <>
@@ -93,7 +117,7 @@ export default () => {
             <ViroARSceneNavigator
               autofocus={true}
               initialScene={{
-                scene: () => HelloWorldSceneAR(globalModel.name),
+                scene: () => HelloWorldSceneAR({ modelName: globalModel.name, rotationActive: isRotating }),
               }}
               style={styles.f1}
             />
@@ -107,6 +131,7 @@ export default () => {
             menuState={isMenuActive}
           />
         )}
+        <Button onPress={toggleRotation}>Rotate</Button>
       </ApplicationProvider>
     </>
   );
