@@ -1,9 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Directories for models and assets
 const modelsDir = './models';
-const assetsDir = './components/assets';
+const assetsDir = './assets' // Path to assets folder
 
 const modelsOutputFile = './components/models/modelMapping.tsx';
 const modelsJsonOutputFile = './models/models.json';
@@ -23,7 +22,6 @@ const modelFiles = fs.readdirSync(modelsDir)
   });
 
 fs.writeFileSync(modelsJsonOutputFile, JSON.stringify(modelFiles, null, 2));
-// Generate models.tsx
 const modelsMappingContent = `
   // Mapping of model names to 'require' statements
   const modelMapping: { [key: string]: any } = {
@@ -36,15 +34,29 @@ const modelsMappingContent = `
 fs.writeFileSync(modelsOutputFile, modelsMappingContent);
 console.log(`Generated models static mapping at ${modelsOutputFile}`);
 
-// Generate assets.tsx
+const defaultAsset = 'default.png';
+
+const getAsset = (assetName) => {
+  const assetPath = path.join(assetsDir, assetName);
+  if (fs.existsSync(assetPath)) {
+    return assetName; 
+  }
+  return defaultAsset; 
+};
+
 const assetsMappingContent = `
-  // Mapping of asset names to 'require' statements
   const assetMapping: { [key: string]: any } = {
-    ${modelFiles.map(model => `'${model.asset}': require('../../assets/${model.asset}')`).join(',\n    ')}
+    ${modelFiles.map(model => {
+      const asset = getAsset(model.asset); 
+      return `'${model.asset}': require('../../assets/${asset}')`;
+    }).join(',\n    ')}
   };
 
   export default assetMapping;
 `;
+
+fs.writeFileSync(assetsOutputFile, assetsMappingContent);
+console.log(`Generated assets static mapping at ${assetsOutputFile}`);
 
 fs.writeFileSync(assetsOutputFile, assetsMappingContent);
 console.log(`Generated assets static mapping at ${assetsOutputFile}`);
