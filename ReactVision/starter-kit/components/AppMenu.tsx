@@ -1,6 +1,6 @@
 import { Button, ButtonProps, Icon, IconProps, Layout } from "@ui-kitten/components"
 import { StyleSheet } from "react-native"
-import { AppMenuProps } from "./ProductsPage"
+import { AppMenuProps } from "./types"
 
 
 const AppMenu: React.FC<AppMenuProps> = ({ menuState, ...props }) => {

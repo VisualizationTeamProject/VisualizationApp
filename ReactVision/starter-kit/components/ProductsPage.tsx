@@ -1,6 +1,5 @@
 import {
   Button,
-  ButtonProps,
   Card,
   Icon,
   IconElement,
@@ -10,41 +9,61 @@ import {
   Text,
   TopNavigation,
 } from "@ui-kitten/components";
-import React from "react";
+import React, { useState } from "react";
 import { Image, ImageBackground, ListRenderItemInfo, StyleSheet } from "react-native";
 import { AppMenu } from "./AppMenu";
+import {objectModel, ProductProps } from "./types";
+import models from '../models/models.json';
+import assetMapping from "./assets/assetMapping";
+
+
 
 const StarIcon = (props: IconProps): IconElement => (
   <Icon {...props} name="star" />
 );
-const items: String[] = ["Modern", "Simple", "Gothic"];
-export interface AppMenuProps extends ButtonProps {
-  menuState: boolean;
-}
-const Products:React.FC<AppMenuProps> = ({ menuState, ...props }) => {
-  const displayItems: String[] = items;
+
+const parsedModels: objectModel[] = models.map(model => ({
+  name: model.name,
+  filename: model.filename,
+  asset: assetMapping[model.asset],
+}));
+const Products:React.FC<ProductProps> = ({ menuState, selectedGlobalModel, handleObjectChange, ...props }) => {
+
+
+  const displayItems: objectModel[] = parsedModels;
+  const [selectedModel, setModel] = useState<objectModel | undefined>(selectedGlobalModel)
+  const handleObjectPress = (object: objectModel) => {
+    setModel(object)
+    handleObjectChange(object)
+  }
 
   const renderHorizontalItem = (
-    info: ListRenderItemInfo<String>
+    info: ListRenderItemInfo<objectModel>
   ): React.ReactElement => (
     <Button
       accessoryLeft={StarIcon}
       style={styles.buttons}
-    >{`${info.item}`}</Button>
+    >{`${info.item.name}`}</Button>
   );
 
   const renderVerticalItem = (
-    info: ListRenderItemInfo<String>
-  ): React.ReactElement => (
-    <Card
-    style={styles.verticalItem}
-    >
-        <Image
-        style={styles.image}
-        source={require('./assets/isometric-1.png')}/>
-        <Text>{`${info.item}`}</Text>
-    </Card>
-  );
+    info: ListRenderItemInfo<objectModel>
+  ): React.ReactElement => {
+    
+    return (
+      <Button onPress={() => handleObjectPress(info.item)} >
+      <Card
+      style={styles.verticalItem}
+      >
+          <Image
+          style={styles.image}
+          source={info.item.asset}/>
+          <Text>{`${info.item.name}`}</Text>
+      </Card>
+      </Button>
+  
+
+  )};
 
 
   const renderHeader = (): React.ReactElement => (

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Bambo_House",
+    "filename": "Bambo_House.obj",
+    "asset": "Bambo_House.png"
+  },
+  {
+    "name": "building_04",
+    "filename": "building_04.obj",
+    "asset": "building_04.png"
+  },
+  {
+    "name": "Cyprys_House",
+    "filename": "Cyprys_House.obj",
+    "asset": "Cyprys_House.png"
+  }
+]
