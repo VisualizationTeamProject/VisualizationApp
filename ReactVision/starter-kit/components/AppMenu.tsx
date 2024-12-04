@@ -3,13 +3,13 @@ import { StyleSheet } from "react-native"
 import { AppMenuProps } from "./types"
 
 
-const AppMenu: React.FC<AppMenuProps> = ({ menuState, ...props }) => {
+const AppMenu: React.FC<AppMenuProps> = ({ menuState, switchMenu, ...props }) => {
     const PlusCircleIcon = (props: IconProps) => {
         return <Icon {...props} style={[props.style, menuState! ? styles.icon : styles.iconActive]} fill={menuState? 'black' : 'white'} name='plus-circle-outline' />
       }
       
     return (
-        <Button style={!menuState ? styles.menuButton : styles.menuActive} accessoryLeft={PlusCircleIcon} {...props} />
+        <Button style={!menuState ? styles.menuButton : styles.menuActive} accessoryLeft={PlusCircleIcon} onPress={switchMenu} {...props} />
     )
 }
 const styles = StyleSheet.create({

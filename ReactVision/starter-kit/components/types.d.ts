@@ -6,8 +6,10 @@ export type objectModel = {
   asset: SVG
 };
 
-export interface AppMenuProps extends ButtonProps {
+export interface AppMenuProps {
   menuState: boolean;
+  switchMenu: () => void;
+
 }
 
 export interface ProductProps extends AppMenuProps {

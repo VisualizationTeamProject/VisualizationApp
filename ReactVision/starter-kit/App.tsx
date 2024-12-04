@@ -97,12 +97,12 @@ export default () => {
               }}
               style={styles.f1}
             />
-            <AppMenu onPress={handleMenuChange} menuState={isMenuActive} />
+            <AppMenu switchMenu={handleMenuChange} menuState={isMenuActive} />
           </>
         ) : (
           <Products
+            switchMenu={handleMenuChange}
             selectedGlobalModel={globalModel}
-            onPress={handleMenuChange}
             handleObjectChange={handleObjectChange}
             menuState={isMenuActive}
           />

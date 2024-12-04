@@ -27,7 +27,7 @@ const parsedModels: objectModel[] = models.map(model => ({
   filename: model.filename,
   asset: assetMapping[model.asset],
 }));
-const Products:React.FC<ProductProps> = ({ menuState, selectedGlobalModel, handleObjectChange, ...props }) => {
+const Products:React.FC<ProductProps> = ({ menuState, selectedGlobalModel, handleObjectChange, switchMenu, ...props }) => {
 
 
   const displayItems: objectModel[] = parsedModels;
@@ -35,6 +35,7 @@ const Products:React.FC<ProductProps> = ({ menuState, selectedGlobalModel, handl
   const handleObjectPress = (object: objectModel) => {
     setModel(object)
     handleObjectChange(object)
+    switchMenu()
   }
 
   const renderHorizontalItem = (
@@ -51,16 +52,15 @@ const Products:React.FC<ProductProps> = ({ menuState, selectedGlobalModel, handl
   ): React.ReactElement => {
     
     return (
-      <Button onPress={() => handleObjectPress(info.item)} >
       <Card
-      style={styles.verticalItem}
+      style={[info.index != displayItems.length -1 ? styles.verticalItem : styles.verticalItemLast, info.item.name === selectedModel?.name ? styles.selectedItem : '']}
+      onPress={() => handleObjectPress(info.item)}
       >
           <Image
           style={styles.image}
           source={info.item.asset}/>
           <Text>{`${info.item.name}`}</Text>
       </Card>
-      </Button>
   
 
   )};
@@ -89,8 +89,9 @@ const Products:React.FC<ProductProps> = ({ menuState, selectedGlobalModel, handl
           showsVerticalScrollIndicator={true}
           ListHeaderComponent={renderHeader}
           renderItem={renderVerticalItem}
+          style={{paddingBottom: 170}}
         />
-      <AppMenu onPress={props.onPress} menuState={menuState} />
+      <AppMenu switchMenu={switchMenu} menuState={menuState} />
 
       </Card>
 
@@ -115,6 +116,15 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     textAlign: 'center',
     alignItems: 'center',
+  },
+  verticalItemLast: {
+    borderRadius: 15,
+    textAlign: 'center',
+    alignItems: 'center',
+    marginBottom: 165,
+  },
+  selectedItem: {
+    borderColor: 'red',
   },
   image: {
     height:200,
