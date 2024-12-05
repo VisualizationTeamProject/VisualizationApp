@@ -1,11 +1,11 @@
 
   const assetMapping: { [key: string]: any } = {
     'Bambo_House.png': require('../../assets/default.png'),
-    'building_04.png': require('../../assets/building_04.png'),
     'Cyprys_House.png': require('../../assets/Cyprys_House.png'),
-    'house1': require('../../models/house1.png'),
-    'house1_open1': require('../../models/house1_open1.png'),
-    'house1_open2': require('../../models/house1_open2.png')
+    'building_04.png': require('../../assets/building_04.png'),
+    'house1.png': require('../../assets/default.png'),
+    'house1_open1.png': require('../../assets/default.png'),
+    'house1_open2.png': require('../../assets/default.png')
   };
 
   export default assetMapping;
