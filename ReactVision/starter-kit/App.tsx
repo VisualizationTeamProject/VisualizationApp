@@ -77,8 +77,15 @@ const HelloWorldSceneAR = ({ modelName, rotationActive }) => {
         ]);
       }, 50);
     }
-    return () => clearInterval(interval);
+    else {
+      clearInterval(interval)
+    }
   }, [rotationActive]);
+
+  const onDragHandler = (dragToPos: Viro3DPoint, source: ViroSource) => {
+
+  }
+
 
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
@@ -89,6 +96,8 @@ const HelloWorldSceneAR = ({ modelName, rotationActive }) => {
         scale={scaleObject}
         type="OBJ"
         onPinch={onPinchHandle}
+        // onRotate={onRotateHandler}
+        onDrag={onDragHandler}
         rotation={rotation} // Apply the rotation to the object
       />
     </ViroARScene>
@@ -131,7 +140,6 @@ export default () => {
             menuState={isMenuActive}
           />
         )}
-        <Button onPress={toggleRotation}>Rotate</Button>
       </ApplicationProvider>
     </>
   );
