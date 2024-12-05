@@ -9,10 +9,11 @@ export type objectModel = {
 export interface AppMenuProps {
   menuState: boolean;
   switchMenu: () => void;
-
+  switchRotation: (boolean) => void;
 }
 
 export interface ProductProps extends AppMenuProps {
   selectedGlobalModel: objectModel | undefined;
   handleObjectChange: (objectModel) => void;
+  switchRotation: null;
 }
