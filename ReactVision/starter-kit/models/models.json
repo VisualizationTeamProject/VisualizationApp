@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Bambo_House",
+    "filename": "Bambo_House.obj",
+    "asset": "Bambo_House.png"
+  },
+  {
+    "name": "Cyprys_House",
+    "filename": "Cyprys_House.obj",
+    "asset": "Cyprys_House.png"
+  },
+  {
+    "name": "building_04",
+    "filename": "building_04.obj",
+    "asset": "building_04.png"
+  },
+  {
+    "name": "house1",
+    "filename": "house1.obj",
+    "asset": "house1.png"
+  },
+  {
+    "name": "house1_open1",
+    "filename": "house1_open1.obj",
+    "asset": "house1_open1.png"
+  },
+  {
+    "name": "house1_open2",
+    "filename": "house1_open2.obj",
+    "asset": "house1_open2.png"
+  }
+]

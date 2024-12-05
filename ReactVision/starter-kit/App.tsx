@@ -1,56 +1,50 @@
 import {
   ViroARScene,
   ViroARSceneNavigator,
-  ViroText,
-  ViroTrackingReason,
+  Viro3DObject,
   ViroTrackingStateConstants,
+  ViroAmbientLight,
+  ViroARCamera,
+  ViroNode,
+  ViroQuad,
 } from "@reactvision/react-viro";
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
-
-const HelloWorldSceneAR = () => {
-  const [text, setText] = useState("Initializing AR...");
-
-  function onInitialized(state: any, reason: ViroTrackingReason) {
-    console.log("onInitialized", state, reason);
-    if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
-      setText("Hello World!");
-    } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
-      // Handle loss of tracking
-    }
-  }
-
-  return (
-    <ViroARScene onTrackingUpdated={onInitialized}>
-      <ViroText
-        text={text}
-        scale={[0.5, 0.5, 0.5]}
-        position={[0, 0, -1]}
-        style={styles.helloWorldTextStyle}
-      />
-    </ViroARScene>
-  );
-};
+import React, { useState, useEffect, useRef } from "react";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
+import * as eva from "@eva-design/eva";
+import {
+  ApplicationProvider,
+  Button,
+  Icon,
+  IconElement,
+  IconProps,
+  IconRegistry,
+  Layout,
+} from "@ui-kitten/components";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
+import { Products } from "./components/ProductsPage";
+import { AppMenu } from "./components/AppMenu";
+import { objectModel } from "./components/types";
+import modelMapping from "./components/models/modelMapping";
+import { ViroSource } from "@reactvision/react-viro/dist/components/Types/ViroUtils";
+import {
+  ViroPinchState,
+  ViroPinchStateTypes,
+} from "@reactvision/react-viro/dist/components/Types/ViroEvents";
+import { SceneWrapper } from "./components/SceneWrapper";
+import { SceneAR } from "./components/SceneAR";
+import { ARSceneProvider, useARSceneContext } from "./components/ARProvider";
+import { NavigatorApp } from "./components/Navigator";
 
 export default () => {
   return (
-    <ViroARSceneNavigator
-      autofocus={true}
-      initialScene={{
-        scene: HelloWorldSceneAR,
-      }}
-      style={styles.f1}
-    />
+    <>
+      <IconRegistry icons={EvaIconsPack} />
+
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <ARSceneProvider>
+          <NavigatorApp />
+        </ARSceneProvider>
+      </ApplicationProvider>
+    </>
   );
 };
-
-var styles = StyleSheet.create({
-  f1: { flex: 1 },
-  helloWorldTextStyle: {
-    fontFamily: "Arial",
-    fontSize: 30,
-    color: "#ffffff",
-    textAlignVertical: "center",
-    textAlign: "center",
-  },
-});
