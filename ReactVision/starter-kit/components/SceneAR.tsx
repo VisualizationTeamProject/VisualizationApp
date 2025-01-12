@@ -9,9 +9,8 @@ import {
 } from "@reactvision/react-viro";
 import { ViroPinchState, ViroRotateState } from "@reactvision/react-viro/dist/components/Types/ViroEvents";
 import { ViroSource } from "@reactvision/react-viro/dist/components/Types/ViroUtils";
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import modelMapping from "./models/modelMapping";
-import { objectModel } from "./types";
 import { useARSceneContext } from "./ARProvider";
 
 

@@ -1,9 +1,7 @@
 import {
   Button,
-  ButtonProps,
   Icon,
   IconProps,
-  Layout,
 } from "@ui-kitten/components";
 import { StyleSheet, View } from "react-native";
 import { AppMenuProps } from "./types";
@@ -23,6 +21,17 @@ const AppMenu: React.FC<AppMenuProps> = ({
         style={[props.style, menuState! ? styles.icon : styles.mainIcon]}
         fill={menuState ? "black" : "white"}
         name="plus-circle-outline"
+        
+      />
+    );
+  };
+
+  const HomeCircleIcon = (props: IconProps) => {
+    return (
+      <Icon
+        {...props}
+        style={[props.style, menuState! ? styles.icon : styles.mainIcon]}
+        name="home-outline"
       />
     );
   };
@@ -49,10 +58,11 @@ const AppMenu: React.FC<AppMenuProps> = ({
     );
   };
 
-  return (
-    <View
-      style={[styles.menu, !menuState ? styles.menuButton : styles.menuActive]}
-    >
+return (
+  <View
+    style={[styles.menu, !menuState ? styles.menuButton : styles.menuActive]}
+  >
+    {!menuState && (
       <Button
         style={[
           styles.button,
@@ -63,15 +73,17 @@ const AppMenu: React.FC<AppMenuProps> = ({
         onPress={() => switchRotation(true)}
         {...props}
       />
-      <Button
-        style={[
-          styles.button,
-          !menuState ? styles.button : styles.buttonActive,
-        ]}
-        accessoryLeft={PlusCircleIcon}
-        onPress={switchMenu}
-        {...props}
-      />
+    )}
+    <Button
+      style={[
+        styles.button,
+        !menuState ? styles.button : styles.buttonActive,
+      ]}
+      accessoryLeft={menuState ? HomeCircleIcon : PlusCircleIcon}
+      onPress={switchMenu}
+      {...props}
+    />
+    {!menuState && (
       <Button
         style={[
           styles.button,
@@ -82,8 +94,10 @@ const AppMenu: React.FC<AppMenuProps> = ({
         onPress={() => switchRotation(false)}
         {...props}
       />
-    </View>
-  );
+    )}
+  </View>
+);
+
 };
 const styles = StyleSheet.create({
   button: {
@@ -103,7 +117,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonActive: {
-    backgroundColor: "rgba(243, 243, 243, 0.95)",
+    backgroundColor: "rgba(168, 36, 19, 0.95)",
+    width: 80,
+    height: 80,
   },
   menuButton: {
     position: "absolute",

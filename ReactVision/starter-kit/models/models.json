@@ -2,7 +2,8 @@
   {
     "name": "Bambo_House",
     "filename": "Bambo_House.obj",
-    "asset": "Bambo_House.png"
+    "asset": "Bambo_House.png",
+    "displayName": "Bamboo House"
   },
   {
     "name": "Cyprys_House",

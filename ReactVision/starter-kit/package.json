@@ -9,7 +9,6 @@
     "start": "react-native start",
     "test": "jest",
     "models": "node scripts/generateModelsList.js"
-
   },
   "dependencies": {
     "@eva-design/eva": "^2.2.0",

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useARSceneContext } from "./ARProvider";
 import { objectModel } from "./types";
 import { ViroARSceneNavigator } from "@reactvision/react-viro";
-import { View, ActivityIndicator, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { AppMenu } from "./AppMenu";
 import { Products } from "./ProductsPage";
 import { SceneAR } from "./SceneAR";
@@ -54,7 +54,7 @@ export const NavigatorApp = () => {
             viroAppProps={{ isRotationActive }}
             style={styles.f1}
           />
-
+          
           <AppMenu
             switchMenu={handleMenuChange}
             switchRotation={handleRotation}

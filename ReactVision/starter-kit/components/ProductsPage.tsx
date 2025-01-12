@@ -25,6 +25,18 @@ const StarIcon = (props: IconProps): IconElement => (
   <Icon {...props} name="star" />
 );
 
+const HomeIcon = (props: IconProps) => {
+  return (
+    <Icon
+        {...props}
+        style={{ width: 24, height: 24, marginLeft: 20}
+      }
+      fill={"white"}
+      name="home-outline"
+    />
+  );
+};
+
 const parsedModels: objectModel[] = models.map((model) => ({
   name: model.name,
   filename: model.filename,
@@ -47,14 +59,16 @@ const Products: React.FC<ProductProps> = ({
     switchMenu();
   };
 
-  const renderHorizontalItem = (
-    info: ListRenderItemInfo<objectModel>
-  ): React.ReactElement => (
-    <Button
-      accessoryLeft={StarIcon}
-      style={styles.buttons}
-    >{`${info.item.name}`}</Button>
-  );
+const renderHorizontalItem = (
+  info: ListRenderItemInfo<objectModel>
+): React.ReactElement => (
+  <Button
+    accessoryLeft={HomeIcon}
+    style={styles.buttons}
+  >
+    <Text style={{ marginRight: 10 }}>{info.item.name}</Text>
+  </Button>
+);
 
   const renderVerticalItem = (
     info: ListRenderItemInfo<objectModel>
@@ -89,7 +103,7 @@ const Products: React.FC<ProductProps> = ({
 
   return (
     <Layout level="1" style={styles.layout}>
-      <TopNavigation alignment="center" title="ReactVision" />
+      <TopNavigation alignment="center" title="HomeVerse"/>
       <Card style={{ position: "relative" }}>
         <List
           contentContainerStyle={styles.list}
@@ -110,7 +124,11 @@ const styles = StyleSheet.create({
     height: 1000,
   },
   buttons: {
-    width: 110,
+    width: 150,
+    borderColor: "rgba(66, 0, 0, 0.95)",
+    borderWidth: 1,
+    backgroundColor: "rgba(240, 8, 8, 0.76)",
+    borderRadius: 25,
   },
   horizontalList: {
     gap: 15,
@@ -130,12 +148,14 @@ const styles = StyleSheet.create({
     marginBottom: 165,
   },
   selectedItem: {
-    borderColor: "red",
+    borderColor: "rgba(168, 36, 19, 0.95)",
+    borderWidth: 4,
   },
   image: {
     height: 200,
     width: 200,
   },
+
 });
 
 export { Products };
