@@ -1,33 +1,82 @@
 [
   {
-    "name": "Bambo_House",
-    "filename": "Bambo_House.obj",
-    "asset": "Bambo_House.png",
-    "displayName": "Bamboo House"
+    "name": "bamboo_house",
+    "filename": "bamboo_house.obj",
+    "asset": "bamboo_house.png"
   },
   {
-    "name": "Cyprys_House",
-    "filename": "Cyprys_House.obj",
-    "asset": "Cyprys_House.png"
+    "name": "big_building",
+    "filename": "big_building.obj",
+    "asset": "big_building.png"
   },
   {
-    "name": "building_04",
-    "filename": "building_04.obj",
-    "asset": "building_04.png"
+    "name": "castle",
+    "filename": "castle.obj",
+    "asset": "castle.png"
   },
   {
-    "name": "house1",
-    "filename": "house1.obj",
-    "asset": "house1.png"
+    "name": "cyprys_house",
+    "filename": "cyprys_house.obj",
+    "asset": "cyprys_house.png"
   },
   {
-    "name": "house1_open1",
-    "filename": "house1_open1.obj",
-    "asset": "house1_open1.png"
+    "name": "family_house",
+    "filename": "family_house.obj",
+    "asset": "family_house.png"
   },
   {
-    "name": "house1_open2",
-    "filename": "house1_open2.obj",
-    "asset": "house1_open2.png"
+    "name": "family_house_open",
+    "filename": "family_house_open.obj",
+    "asset": "family_house_open.png"
+  },
+  {
+    "name": "gropius_house_habitatnow",
+    "filename": "gropius_house_habitatnow.obj",
+    "asset": "gropius_house_habitatnow.png"
+  },
+  {
+    "name": "modern_house",
+    "filename": "modern_house.obj",
+    "asset": "modern_house.png"
+  },
+  {
+    "name": "modern_house_open_1",
+    "filename": "modern_house_open_1.obj",
+    "asset": "modern_house_open_1.png"
+  },
+  {
+    "name": "modern_house_open_2",
+    "filename": "modern_house_open_2.obj",
+    "asset": "modern_house_open_2.png"
+  },
+  {
+    "name": "pawilon_barcelona_habitatnow",
+    "filename": "pawilon_barcelona_habitatnow.obj",
+    "asset": "pawilon_barcelona_habitatnow.png"
+  },
+  {
+    "name": "shed",
+    "filename": "shed.obj",
+    "asset": "shed.png"
+  },
+  {
+    "name": "shed_open",
+    "filename": "shed_open.obj",
+    "asset": "shed_open.png"
+  },
+  {
+    "name": "steiner_house_habitatnow",
+    "filename": "steiner_house_habitatnow.obj",
+    "asset": "steiner_house_habitatnow.png"
+  },
+  {
+    "name": "the_glass_house_habitatnow",
+    "filename": "the_glass_house_habitatnow.obj",
+    "asset": "the_glass_house_habitatnow.png"
+  },
+  {
+    "name": "villa_savoye_habitatnow",
+    "filename": "villa_savoye_habitatnow.obj",
+    "asset": "villa_savoye_habitatnow.png"
   }
 ]
