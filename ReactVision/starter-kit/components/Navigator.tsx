@@ -7,9 +7,9 @@ import { AppMenu } from "./AppMenu";
 import { Products } from "./ProductsPage";
 import { SceneAR } from "./SceneAR";
 const initModel: objectModel = {
-  name: "building_04",
-  filename: "Bambo_House.obj",
-  asset: "Bambo_House.png",
+  name: "Big Building",
+  filename: "bamboo_house.obj",
+  asset: "bamboo_house.png",
 };
 export const NavigatorApp = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
