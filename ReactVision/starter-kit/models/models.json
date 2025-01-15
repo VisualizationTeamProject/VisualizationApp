@@ -1,77 +1,82 @@
 [
   {
-    "name": "Bamboo House",
-    "filename": "./bamboo_house/bamboo_house.obj",
-    "asset": "./bamboo_house/bamboo_house.png"
+    "name": "bamboo_house",
+    "filename": "bamboo_house.obj",
+    "asset": "bamboo_house.png"
   },
   {
-    "name": "Cyprys House",
-    "filename": "./cyprys_house/cyprys_house.obj",
-    "asset": "./cyprys_house/cyprys_house.png"
+    "name": "big_building",
+    "filename": "big_building.obj",
+    "asset": "big_building.png"
   },
   {
-    "name": "Big Building",
-    "filename": "./big_building/big_building.obj",
-    "asset": "./big_building/big_building.png"
+    "name": "castle",
+    "filename": "castle.obj",
+    "asset": "castle.png"
   },
   {
-    "name": "Castle",
-    "filename": "./castle/castle.obj",
-    "asset": "./castle/castle.png"
+    "name": "cyprys_house",
+    "filename": "cyprys_house.obj",
+    "asset": "cyprys_house.png"
   },
   {
-    "name": "Family House",
-    "filename": "./family_house/family_house.obj",
-    "asset": "./family_house/family_house.png"
+    "name": "family_house",
+    "filename": "family_house.obj",
+    "asset": "family_house.png"
   },
   {
-    "name": "Family House (No roof)",
-    "filename": "./family_house/family_house_open.obj",
-    "asset": "./family_house/family_house_open.png"
+    "name": "family_house_open",
+    "filename": "family_house_open.obj",
+    "asset": "family_house_open.png"
   },
   {
-    "name": "Modern House",
-    "filename": "./modern_house/modern_house.obj",
-    "asset": "./modern_house/modern_house.png"
+    "name": "gropius_house_habitatnow",
+    "filename": "gropius_house_habitatnow.obj",
+    "asset": "gropius_house_habitatnow.png"
   },
   {
-    "name": "Modern House (No roof)",
-    "filename": "./modern_house/modern_house_open_1.obj",
-    "asset": "./modern_house/modern_house_open_1.png"
+    "name": "modern_house",
+    "filename": "modern_house.obj",
+    "asset": "modern_house.png"
   },
   {
-    "name": "Modern House (No top floor)",
-    "filename": "./modern_house/modern_house_open_2.obj",
-    "asset": "./modern_house/modern_house_open_2.png"
+    "name": "modern_house_open_1",
+    "filename": "modern_house_open_1.obj",
+    "asset": "modern_house_open_1.png"
   },
   {
-    "name": "Shed",
-    "filename": "./shed/shed.obj",
-    "asset": "./shed/shed.png"
+    "name": "modern_house_open_2",
+    "filename": "modern_house_open_2.obj",
+    "asset": "modern_house_open_2.png"
   },
   {
-    "name": "Gropius House",
-    "filename": "./gropius_house/gropius_house.obj",
-    "asset": "./gropius_house/gropius_house.png"
+    "name": "pawilon_barcelona_habitatnow",
+    "filename": "pawilon_barcelona_habitatnow.obj",
+    "asset": "pawilon_barcelona_habitatnow.png"
   },
   {
-    "name": "Barcelona Pavilion",
-    "filename": "./pawilon_barcelona/pawilon_barcelona.obj",
-    "asset": "./pawilon_barcelona/pawilon_barcelona.png"
+    "name": "shed",
+    "filename": "shed.obj",
+    "asset": "shed.png"
   },
   {
-    "name": "Steiner House",
-    "filename": "./steiner_house/steiner_house.obj",
-    "asset": "./steiner_house/steiner_house.png"
+    "name": "shed_open",
+    "filename": "shed_open.obj",
+    "asset": "shed_open.png"
   },
   {
-    "name": "The Glass House",
-    "filename": "./the_glass_house/the_glass_house.obj",
-    "asset": "./the_glass_house/the_glass_house.png"
+    "name": "steiner_house_habitatnow",
+    "filename": "steiner_house_habitatnow.obj",
+    "asset": "steiner_house_habitatnow.png"
   },
   {
-    "name": "Villa Savoye",
-    "filename": "./villa_savoye/villa_savoye.obj",
-    "asset": "./villa_savoye/villa_savoye.png"
+    "name": "the_glass_house_habitatnow",
+    "filename": "the_glass_house_habitatnow.obj",
+    "asset": "the_glass_house_habitatnow.png"
+  },
+  {
+    "name": "villa_savoye_habitatnow",
+    "filename": "villa_savoye_habitatnow.obj",
+    "asset": "villa_savoye_habitatnow.png"
   }
 ]

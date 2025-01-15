@@ -1,0 +1,53 @@
+# Blender 4.1.1 MTL File: 'house1 - open2.blend'
+# www.blender.org
+
+newmtl Black_frame
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Concrete
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd -s 0.1 0.1 0.1 textures/Plaster002_1K-JPG_Color.jpg
+map_Ns -s 0.1 0.1 0.1 textures/Plaster002_1K-JPG_Roughness.jpg
+
+newmtl Glass
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Marble
+Ka 0.100000 0.100000 0.100000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+map_Kd textures/Marble012_1K-JPG_Color.jpg
+map_Ns textures/Marble012_1K-JPG_Roughness.jpg
+
+newmtl Wood
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd textures/Wood051_1K-JPG_Color.jpg
+map_Ns textures/Wood051_1K-JPG_Roughness.jpg
+map_Bump -bm 1.000000 textures/Wood051_1K-JPG_NormalDX.jpg
