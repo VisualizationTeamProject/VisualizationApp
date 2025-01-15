@@ -48,5 +48,30 @@
     "name": "Shed",
     "filename": "./shed/shed.obj",
     "asset": "./shed/shed.png"
+  },
+  {
+    "name": "Gropius House",
+    "filename": "./gropius_house/gropius_house.obj",
+    "asset": "./gropius_house/gropius_house.png"
+  },
+  {
+    "name": "Barcelona Pavilion",
+    "filename": "./pawilon_barcelona/pawilon_barcelona.obj",
+    "asset": "./pawilon_barcelona/pawilon_barcelona.png"
+  },
+  {
+    "name": "Steiner House",
+    "filename": "./steiner_house/steiner_house.obj",
+    "asset": "./steiner_house/steiner_house.png"
+  },
+  {
+    "name": "The Glass House",
+    "filename": "./the_glass_house/the_glass_house.obj",
+    "asset": "./the_glass_house/the_glass_house.png"
+  },
+  {
+    "name": "Villa Savoye",
+    "filename": "./villa_savoye/villa_savoye.obj",
+    "asset": "./villa_savoye/villa_savoye.png"
   }
 ]
