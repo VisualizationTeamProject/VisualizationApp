@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   activeEdit: {
-    backgroundColor: 'red'
+    backgroundColor: "rgba(240, 8, 8, 0.76)",
   },
   menu: {
     display: "flex",
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonActive: {
-    backgroundColor: "rgba(168, 36, 19, 0.95)",
+    backgroundColor: "rgba(240, 8, 8, 0.76)",
     width: 80,
     height: 80,
   },
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     height: 65,
   },
   iconActive: {
+    
     width: 30,
     height: 30,
   },

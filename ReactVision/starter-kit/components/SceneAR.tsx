@@ -6,6 +6,7 @@ import {
   ViroAmbientLight,
   Viro3DObject,
   ViroQuad,
+  ViroSpotLight,
 } from "@reactvision/react-viro";
 import { ViroPinchState, ViroRotateState } from "@reactvision/react-viro/dist/components/Types/ViroEvents";
 import { ViroSource } from "@reactvision/react-viro/dist/components/Types/ViroUtils";
@@ -16,12 +17,10 @@ import { useARSceneContext } from "./ARProvider";
 
 export const SceneAR = ({ modelName, isRotationActive, handleLoading }) => {
   const { sceneState, setSceneState } = useARSceneContext();
-  console.log(sceneState, "to scene stejt");
   const [scaleObject, setScale] = useState([0.2, 0.2, 0.2]);
   const [rotation, setRotation] = useState([0, 0, 0]);
   const [isActive, setIsActive] = useState<boolean>(isRotationActive);
   function onInitialized(state: any, reason: any) {
-    console.log("onInitialized", state, reason);
     if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
     } else if (state === ViroTrackingStateConstants.TRACKING_UNAVAILABLE) {
     }
@@ -67,11 +66,23 @@ export const SceneAR = ({ modelName, isRotationActive, handleLoading }) => {
           lightReceivingBitMask={3}
           shadowCastingBitMask={2}
           source={modelMapping[modelName]}
+          resources={[modelMapping[modelName+".mtl"]]}
           position={[0, 0, -3]}
           type="OBJ"
           onRotate={onRotateHandler}
           onPinch={onPinchHandle}
         />
+                  <ViroSpotLight
+            innerAngle={5}
+            outerAngle={25}
+            direction={[0,-1,0]}
+            position={[0, 5, 1]}
+            color="#ffffff"
+            castsShadow={true}
+            shadowMapSize={2048}
+            shadowNearZ={2}
+            shadowFarZ={7}
+            shadowOpacity={.7} />
         <ViroQuad
           rotation={[-90, 0, 0]}
           position={[0, -0.001, 0]}

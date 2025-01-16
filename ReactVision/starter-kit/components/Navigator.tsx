@@ -20,10 +20,8 @@ export const NavigatorApp = () => {
   const handleObjectChange = (object: objectModel) => setGlobalModel(object);
   const [isRotationActive, setRotation] = useState<boolean>(true);
   const { sceneState, setSceneState } = useARSceneContext();
-  console.log(sceneState, "to scene stejt w APp");
 
   const handleRotation = (shouldBeActive: boolean) => {
-    console.log(shouldBeActive);
     setRotation(shouldBeActive);
     setSceneState((prev) => ({
       ...prev,

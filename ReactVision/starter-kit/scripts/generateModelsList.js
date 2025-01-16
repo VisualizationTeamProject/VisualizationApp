@@ -25,7 +25,7 @@ fs.writeFileSync(modelsJsonOutputFile, JSON.stringify(modelFiles, null, 2));
 const modelsMappingContent = `
   // Mapping of model names to 'require' statements
   const modelMapping: { [key: string]: any } = {
-    ${modelFiles.map(model => `'${model.name}': require('../../models/${model.filename}')`).join(',\n    ')}
+    ${modelFiles.map(model => `'${model.name}': require('../../models/${model.filename}'),\n    '${model.name}.mtl': require('../../models/${model.name}.mtl')`).join(',\n    ')}
   };
 
   export default modelMapping;

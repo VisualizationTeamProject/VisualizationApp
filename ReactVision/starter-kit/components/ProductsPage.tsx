@@ -11,6 +11,7 @@ import {
 } from "@ui-kitten/components";
 import React, { useState } from "react";
 import {
+  GestureResponderEvent,
   Image,
   ImageBackground,
   ListRenderItemInfo,
@@ -49,29 +50,56 @@ const Products: React.FC<ProductProps> = ({
   switchMenu,
   ...props
 }) => {
-  const displayItems: objectModel[] = parsedModels;
+  const [displayItems, setDisplayItems] = useState<objectModel[]>(parsedModels)
   const [selectedModel, setModel] = useState<objectModel | undefined>(
     selectedGlobalModel
   );
+  const [selectedFilter, setSelectedFilter] = useState("")
   const handleObjectPress = (object: objectModel) => {
     setModel(object);
     handleObjectChange(object);
     switchMenu();
   };
+  function toTitleCase(input: string): string {
+    return input
+        .split('_') 
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+        .join(' '); 
+}
+
+function filterList( input: string): undefined {
+  if(input == selectedFilter){
+    setDisplayItems(parsedModels.sort())
+  } else {
+    let newList = parsedModels.filter(o => o.name == input)
+    setDisplayItems(newList)
+    setSelectedFilter(input)
+  }
+}
+function sortWithPriority(data:objectModel[]): objectModel[] {
+  let priorityString = selectedModel?.name != "" ? selectedModel.name : ""
+  return data.sort((a, b) => {
+      if (a.name === priorityString) return -1; 
+      if (b.name === priorityString) return 1;  
+      return a.name.localeCompare(b.name);          
+  });
+}
+
 
 const renderHorizontalItem = (
   info: ListRenderItemInfo<objectModel>
 ): React.ReactElement => (
   <Button
+    onPress={() => filterList(info.item.name)}
     accessoryLeft={HomeIcon}
-    style={styles.buttons}
+    style={info.item.name == selectedFilter ? styles.selectedButton : styles.buttons}
   >
-    <Text style={{ marginRight: 10 }}>{info.item.name}</Text>
+    <Text style={{ marginRight: 10 }}>{toTitleCase(info.item.name)}</Text>
   </Button>
 );
 
   const renderVerticalItem = (
-    info: ListRenderItemInfo<objectModel>
+    info: ListRenderItemInfo<objectModel>,
   ): React.ReactElement => {
     return (
       <Card
@@ -84,7 +112,7 @@ const renderHorizontalItem = (
         onPress={() => handleObjectPress(info.item)}
       >
         <Image style={styles.image} source={info.item.asset} />
-        <Text>{`${info.item.name}`}</Text>
+        <Text style={styles.cardTitle}>{`${toTitleCase(info.item.name)}`}</Text>
       </Card>
     );
   };
@@ -95,7 +123,7 @@ const renderHorizontalItem = (
         contentContainerStyle={styles.horizontalList}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        data={displayItems.reverse()}
+        data={parsedModels.sort()}
         renderItem={renderHorizontalItem}
       />
     </>
@@ -107,7 +135,7 @@ const renderHorizontalItem = (
       <Card style={{ position: "relative" }}>
         <List
           contentContainerStyle={styles.list}
-          data={displayItems}
+          data={sortWithPriority(displayItems)}
           showsVerticalScrollIndicator={true}
           ListHeaderComponent={renderHeader}
           renderItem={renderVerticalItem}
@@ -123,7 +151,14 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 1000,
   },
+  cardTitle: {
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 10,
+  },
   buttons: {
+    paddingRight: 15,
+    paddingLeft:5,
     width: 150,
     borderColor: "rgba(66, 0, 0, 0.95)",
     borderWidth: 1,
@@ -148,13 +183,23 @@ const styles = StyleSheet.create({
     marginBottom: 165,
   },
   selectedItem: {
-    borderColor: "rgba(168, 36, 19, 0.95)",
+    borderColor: "rgba(85, 85, 85, 0.5)",
     borderWidth: 4,
   },
   image: {
     height: 200,
     width: 200,
+    borderRadius:20,
   },
+  selectedButton: {
+    paddingRight: 15,
+    paddingLeft:5,
+    width: 150,
+    borderColor: "rgba(66, 0, 0, 0.95)",
+    borderWidth: 1,
+    backgroundColor: "rgba(240, 82, 82, 0.86)",
+    borderRadius: 25,
+  }
 
 });
 
